@@ -8,16 +8,24 @@ menu.classList.toggle("active");
 
 }
 
-/* LOAD COMPONENTS */
+/* Detect correct path */
+
+let pathPrefix = "";
+
+if(window.location.pathname.includes("/calculators/")){
+pathPrefix = "../";
+}
+
+/* Load components */
 
 function loadComponent(id, file){
 
-fetch(file)
+fetch(pathPrefix + file)
 .then(response => response.text())
 .then(data => {
 document.getElementById(id).innerHTML = data;
 })
-.catch(error => console.error("Error loading component:", error));
+.catch(error => console.error("Component load error:", error));
 
 }
 

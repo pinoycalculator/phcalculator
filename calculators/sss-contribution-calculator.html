@@ -8,8 +8,9 @@
 
 <title>SSS Contribution Calculator Philippines</title>
 
+<meta name="description" content="Calculate your monthly SSS contribution in the Philippines for employees or voluntary members.">
+
 <link rel="stylesheet" href="/phcalculator/css/style.css">
-<script src="/phcalculator/js/main.js"></script>
 
 <style>
 
@@ -90,7 +91,6 @@ box-shadow:0 5px 15px rgba(0,0,0,0.05);
 <!-- GLOBAL HEADER -->
 <div id="header"></div>
 
-
 <div class="container">
 
 <div class="hero">
@@ -102,7 +102,6 @@ Estimate your monthly SSS contribution based on your salary.
 </p>
 
 </div>
-
 
 <div class="calculator-card">
 
@@ -132,7 +131,6 @@ oninput="syncInput(); calculateSSS();">
 
 </div>
 
-
 <div class="info-section">
 
 <h2 data-i18n="whatSSS">What is SSS Contribution?</h2>
@@ -143,7 +141,6 @@ SSS contributions are mandatory payments made to the Social Security System to f
 
 </div>
 
-
 <div class="info-section">
 
 <h2 data-i18n="exampleTitle">Example Contribution</h2>
@@ -153,7 +150,6 @@ If your salary is ₱20,000, your estimated total contribution is ₱2,800 per m
 </p>
 
 </div>
-
 
 <div class="info-section">
 
@@ -169,14 +165,12 @@ Employees, self-employed individuals, voluntary members, and OFWs can contribute
 
 </div>
 
-
 </div>
 
 <!-- GLOBAL FOOTER -->
 <div id="footer"></div>
 
-
-<script src="../js/main.js"></script>
+<script src="/phcalculator/js/main.js"></script>
 
 <script>
 
@@ -198,23 +192,15 @@ calculateSSS();
 
 }
 
-
 function syncSlider(){
-
 let salary = document.getElementById("salary").value;
-
 document.getElementById("salarySlider").value = salary;
-
 }
 
 function syncInput(){
-
 let salary = document.getElementById("salarySlider").value;
-
 document.getElementById("salary").value = salary;
-
 }
-
 
 function calculateSSS(){
 
@@ -232,7 +218,7 @@ let employer = salary * 0.095;
 if(memberType==="voluntary"){
 
 document.getElementById("result").innerHTML =
-"Total Contribution: ₱ "+total.toFixed(2);
+"Total Contribution: ₱ " + total.toFixed(2);
 
 }else{
 
@@ -246,7 +232,6 @@ Employer Share: ₱ ${employer.toFixed(2)}
 }
 
 }
-
 
 const translations = {
 
@@ -280,7 +265,6 @@ faqAnswer1:"Ang mga empleyado, self-employed, voluntary members, at OFWs ay maaa
 
 };
 
-
 function setLanguage(lang){
 
 localStorage.setItem("language", lang);
@@ -288,13 +272,11 @@ localStorage.setItem("language", lang);
 document.querySelectorAll("[data-i18n]").forEach(el=>{
 
 let key = el.getAttribute("data-i18n");
-
 el.innerText = translations[lang][key];
 
 });
 
 }
-
 
 window.onload = function(){
 

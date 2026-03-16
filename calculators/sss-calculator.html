@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SSS Contribution Calculator Philippines</title>
+
+<style>
+
+body{
+font-family:Arial, sans-serif;
+margin:0;
+background:#f4f7fb;
+color:#333;
+}
+
+header{
+background:white;
+border-bottom:1px solid #eee;
+padding:18px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-weight:bold;
+font-size:20px;
+color:#2563eb;
+}
+
+.lang-switch button{
+margin-left:5px;
+padding:6px 10px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.hero{
+margin-bottom:30px;
+}
+
+.calculator-card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+margin-bottom:30px;
+}
+
+input[type="number"]{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:16px;
+}
+
+input[type="range"]{
+width:100%;
+margin-top:15px;
+}
+
+.result{
+margin-top:20px;
+padding:20px;
+background:#eef3ff;
+border-radius:10px;
+font-size:16px;
+}
+
+.tabs{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.tab{
+flex:1;
+padding:10px;
+text-align:center;
+border-radius:8px;
+background:#eee;
+cursor:pointer;
+}
+
+.tab.active{
+background:#2563eb;
+color:white;
+}
+
+.info-section{
+background:white;
+padding:30px;
+border-radius:12px;
+margin-top:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+footer{
+margin-top:40px;
+padding:30px;
+text-align:center;
+background:#111827;
+color:white;
+}
+
+@media(max-width:768px){
+
+.container{
+padding:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">Pinoy Finance Tools</div>
+
+<div class="lang-switch">
+<button onclick="setLanguage('en')">EN</button>
+<button onclick="setLanguage('tl')">TL</button>
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div class="hero">
+
+<h1 data-i18n="title">SSS Contribution Calculator</h1>
+
+<p data-i18n="description">
+Estimate your monthly SSS contribution based on your salary.
+</p>
+
+</div>
+
+
+<div class="calculator-card">
+
+<div class="tabs">
+<div class="tab active" onclick="setType('employee')" id="employeeTab" data-i18n="employee">Employee</div>
+<div class="tab" onclick="setType('voluntary')" id="voluntaryTab" data-i18n="voluntary">Voluntary</div>
+</div>
+
+<label data-i18n="salaryLabel">Monthly Salary (₱)</label>
+
+<input
+type="number"
+id="salary"
+value="20000"
+oninput="syncSlider(); calculateSSS();">
+
+<input
+type="range"
+min="4000"
+max="30000"
+step="500"
+value="20000"
+id="salarySlider"
+oninput="syncInput(); calculateSSS();">
+
+<div class="result" id="result"></div>
+
+</div>
+
+
+<div class="info-section">
+
+<h2 data-i18n="whatSSS">What is SSS Contribution?</h2>
+
+<p data-i18n="sssExplanation">
+SSS contributions are mandatory payments made to the Social Security System to fund benefits such as retirement, sickness, maternity, disability, and death benefits.
+</p>
+
+</div>
+
+
+<div class="info-section">
+
+<h2 data-i18n="exampleTitle">Example Contribution</h2>
+
+<p data-i18n="exampleText">
+If your salary is ₱20,000, your estimated total contribution is ₱2,800 per month.
+</p>
+
+</div>
+
+
+<div class="info-section">
+
+<h2>FAQ</h2>
+
+<p data-i18n="faq1">
+Who needs to pay SSS contributions?
+</p>
+
+<p data-i18n="faqAnswer1">
+Employees, self-employed individuals, voluntary members, and OFWs can contribute to SSS.
+</p>
+
+</div>
+
+
+</div>
+
+<footer>
+
+<p>© 2026 Pinoy Finance Tools</p>
+
+</footer>
+
+
+
+<script>
+
+let memberType = "employee";
+
+function setType(type){
+
+memberType = type;
+
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+
+if(type==="employee"){
+document.getElementById("employeeTab").classList.add("active");
+}else{
+document.getElementById("voluntaryTab").classList.add("active");
+}
+
+calculateSSS();
+
+}
+
+
+function syncSlider(){
+
+let salary = document.getElementById("salary").value;
+
+document.getElementById("salarySlider").value = salary;
+
+}
+
+function syncInput(){
+
+let salary = document.getElementById("salarySlider").value;
+
+document.getElementById("salary").value = salary;
+
+}
+
+
+function calculateSSS(){
+
+let salary = parseFloat(document.getElementById("salary").value);
+
+if(!salary){
+document.getElementById("result").innerHTML = "";
+return;
+}
+
+let total = salary * 0.14;
+let employee = salary * 0.045;
+let employer = salary * 0.095;
+
+if(memberType==="voluntary"){
+
+document.getElementById("result").innerHTML =
+"Total Contribution: ₱ "+total.toFixed(2);
+
+}else{
+
+document.getElementById("result").innerHTML =
+`
+Total Contribution: ₱ ${total.toFixed(2)} <br><br>
+Employee Share: ₱ ${employee.toFixed(2)} <br>
+Employer Share: ₱ ${employer.toFixed(2)}
+`;
+
+}
+
+}
+
+
+
+const translations = {
+
+en:{
+title:"SSS Contribution Calculator",
+description:"Estimate your monthly SSS contribution based on your salary.",
+salaryLabel:"Monthly Salary",
+employee:"Employee",
+voluntary:"Voluntary",
+whatSSS:"What is SSS Contribution?",
+sssExplanation:"SSS contributions fund benefits like retirement, sickness, maternity, disability, and death benefits.",
+exampleTitle:"Example Contribution",
+exampleText:"If your salary is ₱20,000, your estimated total contribution is ₱2,800 per month.",
+faq1:"Who needs to pay SSS contributions?",
+faqAnswer1:"Employees, self-employed individuals, voluntary members, and OFWs can contribute to SSS."
+},
+
+tl:{
+title:"SSS Contribution Calculator",
+description:"Tantiyahin ang iyong buwanang kontribusyon sa SSS base sa iyong sahod.",
+salaryLabel:"Buwanang Sahod",
+employee:"Empleyado",
+voluntary:"Boluntaryo",
+whatSSS:"Ano ang SSS Contribution?",
+sssExplanation:"Ang SSS contributions ay ginagamit para sa retirement, sickness, maternity, disability, at death benefits.",
+exampleTitle:"Halimbawa ng Kontribusyon",
+exampleText:"Kung ang sahod mo ay ₱20,000, ang tinatayang kontribusyon ay ₱2,800 kada buwan.",
+faq1:"Sino ang kailangang magbayad ng SSS?",
+faqAnswer1:"Ang mga empleyado, self-employed, voluntary members, at OFWs ay maaaring maghulog sa SSS."
+}
+
+};
+
+
+function setLanguage(lang){
+
+localStorage.setItem("language", lang);
+
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+
+let key = el.getAttribute("data-i18n");
+
+el.innerText = translations[lang][key];
+
+});
+
+}
+
+
+window.onload = function(){
+
+let lang = localStorage.getItem("language") || "en";
+
+setLanguage(lang);
+
+calculateSSS();
+
+}
+
+</script>
+
+</body>
+
+</html>

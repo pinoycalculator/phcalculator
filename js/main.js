@@ -8,24 +8,24 @@ menu.classList.toggle("active");
 
 }
 
-/* Detect correct path */
+/* repository base path */
+const basePath = "/phcalculator/";
 
-let pathPrefix = "";
-
-if(window.location.pathname.includes("/calculators/")){
-pathPrefix = "../";
-}
-
-/* Load components */
+/* load components */
 
 function loadComponent(id, file){
 
-fetch(pathPrefix + file)
-.then(response => response.text())
+fetch(basePath + file)
+.then(response => {
+if(!response.ok){
+throw new Error("Failed to load " + file);
+}
+return response.text();
+})
 .then(data => {
 document.getElementById(id).innerHTML = data;
 })
-.catch(error => console.error("Component load error:", error));
+.catch(error => console.error(error));
 
 }
 

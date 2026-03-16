@@ -8,19 +8,7 @@ menu.classList.toggle("active");
 
 }
 
-
-/* LOAD HEADER */
-
-document.getElementById("header").append(
-document.getElementById("header-template").content.cloneNode(true)
-);
-
-
-/* LOAD FOOTER */
-
-document.getElementById("footer").append(
-document.getElementById("footer-template").content.cloneNode(true)
-);
+/* LOAD COMPONENTS */
 
 function loadComponent(id, file){
 
@@ -28,7 +16,8 @@ fetch(file)
 .then(response => response.text())
 .then(data => {
 document.getElementById(id).innerHTML = data;
-});
+})
+.catch(error => console.error("Error loading component:", error));
 
 }
 

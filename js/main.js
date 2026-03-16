@@ -8,8 +8,13 @@ menu.classList.toggle("active");
 
 }
 
-/* repository base path */
-const basePath = "/phcalculator/";
+/* detect github repo base path */
+
+let basePath = "";
+
+if(window.location.hostname.includes("github.io")){
+basePath = "/phcalculator/";
+}
 
 /* load components */
 
@@ -25,7 +30,7 @@ return response.text();
 .then(data => {
 document.getElementById(id).innerHTML = data;
 })
-.catch(error => console.error(error));
+.catch(error => console.error("Component load error:", error));
 
 }
 

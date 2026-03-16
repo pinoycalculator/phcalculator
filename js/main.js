@@ -21,3 +21,16 @@ document.getElementById("header-template").content.cloneNode(true)
 document.getElementById("footer").append(
 document.getElementById("footer-template").content.cloneNode(true)
 );
+
+function loadComponent(id, file){
+
+fetch(file)
+.then(response => response.text())
+.then(data => {
+document.getElementById(id).innerHTML = data;
+});
+
+}
+
+loadComponent("header","components/header.html");
+loadComponent("footer","components/footer.html");

@@ -9,17 +9,15 @@ menu.classList.toggle("active");
 }
 
 
-/* LOAD HEADER AND FOOTER */
+/* LOAD HEADER */
 
-function loadComponent(id, file){
+document.getElementById("header").append(
+document.getElementById("header-template").content.cloneNode(true)
+);
 
-fetch(file)
-.then(response => response.text())
-.then(data => {
-document.getElementById(id).innerHTML = data;
-});
 
-}
+/* LOAD FOOTER */
 
-loadComponent("header","components/header.html");
-loadComponent("footer","components/footer.html");
+document.getElementById("footer").append(
+document.getElementById("footer-template").content.cloneNode(true)
+);

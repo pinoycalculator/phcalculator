@@ -8,39 +8,9 @@
 
 <title>SSS Contribution Calculator Philippines</title>
 
+<link rel="stylesheet" href="../css/style.css">
+
 <style>
-
-body{
-font-family:Arial, sans-serif;
-margin:0;
-background:#f4f7fb;
-color:#333;
-}
-
-header{
-background:white;
-border-bottom:1px solid #eee;
-padding:18px 30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo{
-font-weight:bold;
-font-size:20px;
-color:#2563eb;
-}
-
-.lang-switch button{
-margin-left:5px;
-padding:6px 10px;
-border:none;
-background:#2563eb;
-color:white;
-border-radius:6px;
-cursor:pointer;
-}
 
 .container{
 max-width:900px;
@@ -110,38 +80,14 @@ margin-top:20px;
 box-shadow:0 5px 15px rgba(0,0,0,0.05);
 }
 
-footer{
-margin-top:40px;
-padding:30px;
-text-align:center;
-background:#111827;
-color:white;
-}
-
-@media(max-width:768px){
-
-.container{
-padding:20px;
-}
-
-}
-
 </style>
 
 </head>
 
 <body>
 
-<header>
-
-<div class="logo">Pinoy Finance Tools</div>
-
-<div class="lang-switch">
-<button onclick="setLanguage('en')">EN</button>
-<button onclick="setLanguage('tl')">TL</button>
-</div>
-
-</header>
+<!-- GLOBAL HEADER -->
+<div id="header"></div>
 
 
 <div class="container">
@@ -225,13 +171,11 @@ Employees, self-employed individuals, voluntary members, and OFWs can contribute
 
 </div>
 
-<footer>
-
-<p>© 2026 Pinoy Finance Tools</p>
-
-</footer>
+<!-- GLOBAL FOOTER -->
+<div id="footer"></div>
 
 
+<script src="../js/main.js"></script>
 
 <script>
 
@@ -303,7 +247,6 @@ Employer Share: ₱ ${employer.toFixed(2)}
 }
 
 
-
 const translations = {
 
 en:{
@@ -365,5 +308,4 @@ calculateSSS();
 </script>
 
 </body>
-
 </html>

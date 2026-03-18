@@ -7,7 +7,7 @@
 
 <title>Income Tax Calculator Philippines</title>
 
-<meta name="description" content="Calculate your income tax in the Philippines using the latest TRAIN law rates. Get monthly tax, annual tax, and net salary instantly.">
+<meta name="description" content="Calculate your income tax in the Philippines using the latest TRAIN law rates.">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/phcalculator/css/style.css">
@@ -26,14 +26,9 @@ margin:auto;
 padding:40px 20px;
 }
 
-.hero h1{
-font-size:34px;
-font-weight:600;
+h1{
+font-size:32px;
 margin-bottom:10px;
-}
-
-.hero p{
-color:#555;
 }
 
 .card{
@@ -44,7 +39,7 @@ box-shadow:0 20px 50px rgba(0,0,0,0.08);
 margin-bottom:30px;
 }
 
-input{
+input, select{
 width:100%;
 padding:14px;
 margin-top:10px;
@@ -53,12 +48,24 @@ border:1px solid #ddd;
 font-size:16px;
 }
 
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
 .result{
 margin-top:25px;
 padding:20px;
 background:#eef3ff;
 border-radius:14px;
 line-height:1.7;
+}
+
+.label{
+font-weight:500;
+margin-top:15px;
+display:block;
 }
 
 .info-section{
@@ -78,6 +85,7 @@ margin-top:15px;
 .table th,.table td{
 padding:12px;
 border-bottom:1px solid #eee;
+text-align:left;
 }
 
 </style>
@@ -86,26 +94,54 @@ border-bottom:1px solid #eee;
 
 <body>
 
+<!-- HEADER -->
 <div id="header"></div>
 
 <div class="container">
 
-<div class="hero">
 <h1>Income Tax Calculator</h1>
-<p>Calculate your monthly and annual income tax instantly using the latest TRAIN law rates.</p>
-</div>
+<p>Flexible calculator for monthly, daily, or hourly earners in the Philippines.</p>
 
+<!-- ✅ CALCULATOR -->
 <div class="card">
 
-<label>Monthly Salary (₱)</label>
+<label class="label">Salary Type</label>
+<select id="salaryType" onchange="calculateTax()">
+<option value="monthly">Monthly</option>
+<option value="daily">Daily</option>
+<option value="hourly">Hourly</option>
+</select>
 
+<label class="label">Salary (₱)</label>
 <input type="number" id="salary" value="30000" oninput="calculateTax()">
+
+<div class="grid">
+
+<div>
+<label class="label">Working Days / Month</label>
+<input type="number" id="days" value="22" oninput="calculateTax()">
+</div>
+
+<div>
+<label class="label">Hours / Day</label>
+<input type="number" id="hours" value="8" oninput="calculateTax()">
+</div>
+
+</div>
+
+<label class="label">Monthly Allowances (Optional)</label>
+
+<div class="grid">
+<input type="number" id="food" placeholder="Food Allowance" oninput="calculateTax()">
+<input type="number" id="transport" placeholder="Transport Allowance" oninput="calculateTax()">
+<input type="number" id="other" placeholder="Other Allowance" oninput="calculateTax()">
+</div>
 
 <div class="result" id="result"></div>
 
 </div>
 
-<!-- TAX TABLE -->
+<!-- ✅ TAX TABLE -->
 <div class="info-section">
 
 <h2>Philippine Income Tax Table (TRAIN Law)</h2>
@@ -122,43 +158,52 @@ border-bottom:1px solid #eee;
 
 </div>
 
-<!-- SEO CONTENT -->
+<!-- ✅ HOW IT WORKS -->
 <div class="info-section">
 
-<h2>How Income Tax is Calculated in the Philippines</h2>
+<h2>How Income Tax is Calculated</h2>
 
 <p>
-Income tax in the Philippines follows a progressive system under the TRAIN Law. This means higher income levels are taxed at higher rates.
+The Philippines uses a progressive tax system under the TRAIN Law. This means different portions of your income are taxed at different rates.
 </p>
 
 <p>
-Your taxable income is your annual salary minus exemptions and contributions like SSS, PhilHealth, and Pag-IBIG.
+Only the amount within each bracket is taxed at that specific rate, not your entire income.
 </p>
 
 </div>
 
+<!-- ✅ NOTES -->
 <div class="info-section">
 
-<h2>What You Should Know</h2>
+<h2>Important Notes</h2>
 
 <ul>
 <li>₱250,000 annual income is tax-free</li>
-<li>Taxes increase progressively</li>
-<li>Government contributions reduce taxable income</li>
+<li>Allowances may or may not be taxable</li>
+<li>SSS, PhilHealth, and Pag-IBIG reduce taxable income</li>
+<li>This is an estimate only</li>
 </ul>
+
+<p>
+👉 Want to compute your contributions?  
+<a href="/phcalculator/calculators/sss-contribution-calculator.html">
+Try the SSS Contribution Calculator
+</a>
+</p>
 
 </div>
 
-<!-- FAQ -->
+<!-- ✅ FAQ -->
 <div class="info-section">
 
 <h2>Frequently Asked Questions</h2>
 
-<p><strong>Is this calculator accurate?</strong><br>
-Yes, it follows the latest TRAIN tax table.</p>
+<p><strong>Is this accurate?</strong><br>
+Yes, it follows TRAIN law rates but actual tax may vary.</p>
 
-<p><strong>Does this include deductions?</strong><br>
-This is a simplified estimate. Actual tax may vary.</p>
+<p><strong>Are allowances taxed?</strong><br>
+Some are taxable depending on classification.</p>
 
 <p><strong>Why is my tax high?</strong><br>
 Higher income falls into higher tax brackets.</p>
@@ -167,6 +212,7 @@ Higher income falls into higher tax brackets.</p>
 
 </div>
 
+<!-- FOOTER -->
 <div id="footer"></div>
 
 <script src="/phcalculator/js/main.js"></script>
@@ -174,42 +220,52 @@ Higher income falls into higher tax brackets.</p>
 <script>
 
 function formatPeso(num){
-return "₱ " + num.toLocaleString(undefined, {minimumFractionDigits:2});
+return "₱ " + num.toLocaleString(undefined,{minimumFractionDigits:2});
 }
 
 function calculateTax(){
 
-let monthly = parseFloat(document.getElementById("salary").value);
-if(!monthly) return;
+let type = document.getElementById("salaryType").value;
+let salary = parseFloat(document.getElementById("salary").value) || 0;
+let days = parseFloat(document.getElementById("days").value) || 0;
+let hours = parseFloat(document.getElementById("hours").value) || 0;
+
+let food = parseFloat(document.getElementById("food").value) || 0;
+let transport = parseFloat(document.getElementById("transport").value) || 0;
+let other = parseFloat(document.getElementById("other").value) || 0;
+
+let allowanceTotal = food + transport + other;
+
+let monthly = 0;
+
+if(type==="monthly"){
+monthly = salary;
+}
+else if(type==="daily"){
+monthly = salary * days;
+}
+else{
+monthly = salary * hours * days;
+}
+
+monthly += allowanceTotal;
 
 let annual = monthly * 12;
 let tax = 0;
 
-if(annual <= 250000){
-tax = 0;
-}
-else if(annual <= 400000){
-tax = (annual - 250000) * 0.15;
-}
-else if(annual <= 800000){
-tax = 22500 + (annual - 400000) * 0.20;
-}
-else if(annual <= 2000000){
-tax = 102500 + (annual - 800000) * 0.25;
-}
-else if(annual <= 8000000){
-tax = 402500 + (annual - 2000000) * 0.30;
-}
-else{
-tax = 2202500 + (annual - 8000000) * 0.35;
-}
+if(annual <= 250000) tax = 0;
+else if(annual <= 400000) tax = (annual - 250000) * 0.15;
+else if(annual <= 800000) tax = 22500 + (annual - 400000) * 0.20;
+else if(annual <= 2000000) tax = 102500 + (annual - 800000) * 0.25;
+else if(annual <= 8000000) tax = 402500 + (annual - 2000000) * 0.30;
+else tax = 2202500 + (annual - 8000000) * 0.35;
 
 let monthlyTax = tax / 12;
 let net = monthly - monthlyTax;
 
 document.getElementById("result").innerHTML = `
-<strong>Monthly Salary:</strong> ${formatPeso(monthly)} <br>
-<strong>Annual Salary:</strong> ${formatPeso(annual)} <br><br>
+<strong>Computed Monthly Income:</strong> ${formatPeso(monthly)} <br>
+<strong>Annual Income:</strong> ${formatPeso(annual)} <br><br>
 
 <strong>Monthly Tax:</strong> ${formatPeso(monthlyTax)} <br>
 <strong>Annual Tax:</strong> ${formatPeso(tax)} <br><br>

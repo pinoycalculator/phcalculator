@@ -244,3 +244,15 @@ background:#0f172a;
 color:white;
 border:1px solid #334155;
 }
+
+  .theme-toggle{
+cursor:pointer;
+font-size:18px;
+padding:6px 10px;
+border-radius:8px;
+background:#f1f5f9;
+}
+
+.theme-toggle:hover{
+background:#e2e8f0;
+}

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -10,170 +9,57 @@
 
 <meta name="description" content="Smart financial calculators for Filipinos. Compute SSS, income tax, loans, and take-home pay instantly.">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/phcalculator/css/style.css">
-
-<style>
-
-body{
-font-family:'Inter',sans-serif;
-background:#f8fafc;
-}
-
-/* HERO */
-.hero{
-text-align:center;
-padding:80px 20px 60px;
-max-width:900px;
-margin:auto;
-}
-
-.hero h1{
-font-size:42px;
-font-weight:600;
-margin-bottom:10px;
-}
-
-.hero p{
-font-size:18px;
-color:#555;
-}
-
-/* BUTTONS */
-.cta-group{
-margin-top:25px;
-display:flex;
-gap:15px;
-justify-content:center;
-flex-wrap:wrap;
-}
-
-.btn-primary{
-background:#2563eb;
-color:white;
-padding:14px 22px;
-border-radius:12px;
-text-decoration:none;
-font-weight:500;
-}
-
-.btn-secondary{
-background:white;
-border:1px solid #ddd;
-padding:14px 22px;
-border-radius:12px;
-text-decoration:none;
-color:#333;
-}
-
-/* TRUST */
-.trust{
-margin-top:40px;
-display:flex;
-justify-content:center;
-gap:25px;
-flex-wrap:wrap;
-font-size:14px;
-color:#666;
-}
-
-/* SECTION */
-.section{
-max-width:1100px;
-margin:auto;
-padding:50px 20px;
-}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-margin-top:25px;
-}
-
-/* CARD */
-.card{
-background:white;
-padding:25px;
-border-radius:18px;
-box-shadow:0 10px 30px rgba(0,0,0,0.06);
-text-decoration:none;
-color:#111;
-transition:0.2s;
-}
-
-.card:hover{
-transform:translateY(-6px);
-}
-
-/* RESULT BOX */
-.result{
-margin-top:15px;
-padding:15px;
-background:#eef3ff;
-border-radius:10px;
-}
-
-/* INFO */
-.info{
-background:white;
-padding:30px;
-border-radius:16px;
-margin-top:30px;
-line-height:1.6;
-}
-
-.cta-section{
-text-align:center;
-padding:60px 20px;
-}
-
-</style>
 
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div id="header"></div>
 
 <!-- HERO -->
 <section class="hero">
 
-<h1>Pinoy Calculator</h1>
+<div class="hero-inner">
+
+<h1>Take Control of Your Finances</h1>
 
 <p>
-Your all-in-one financial calculator for Filipinos.  
-Instantly compute taxes, SSS, loans, and take-home pay.
+Accurate calculators for taxes, SSS, loans, and take-home pay — built for Filipinos 🇵🇭
 </p>
 
 <div class="cta-group">
-<a href="/phcalculator/calculators/income-tax-calculator.html" class="btn-primary">Calculate Income Tax</a>
+<a href="/phcalculator/calculators/income-tax-calculator.html" class="btn-primary">Start Calculating</a>
 <a href="/phcalculator/calculators/sss-contribution-calculator.html" class="btn-secondary">SSS Calculator</a>
 </div>
 
 <div class="trust">
 <span>✔ Accurate & Updated</span>
-<span>✔ Free to Use</span>
-<span>✔ Mobile Friendly</span>
+<span>✔ 100% Free</span>
+<span>✔ Mobile Optimized</span>
+</div>
+
 </div>
 
 </section>
 
-<!-- MINI CALCULATOR -->
+<!-- QUICK TOOL -->
 <section class="section">
 
-<h2>Quick SSS Calculator</h2>
+<div class="section-header">
+<h2>Quick SSS Estimate</h2>
+<p>Instantly preview your monthly contribution</p>
+</div>
 
-<div class="card">
+<div class="card highlight">
 
 <label>Monthly Salary (₱)</label>
 <input type="number" id="miniSalary" value="20000" oninput="miniCalc()">
 
 <div class="result" id="miniResult"></div>
 
-<a href="/phcalculator/calculators/sss-contribution-calculator.html" class="btn-primary" style="margin-top:15px; display:inline-block;">
+<a href="/phcalculator/calculators/sss-contribution-calculator.html" class="btn-primary full">
 Open Full Calculator →
 </a>
 
@@ -181,112 +67,63 @@ Open Full Calculator →
 
 </section>
 
-<!-- ADSENSE -->
-<div style="max-width:1000px;margin:40px auto;text-align:center;">
-
-<div style="background:#f1f5f9;padding:30px;border-radius:12px;">
-<p>Advertisement</p>
-</div>
-
-</div>
-
 <!-- CALCULATORS -->
-<section class="section">
+<section class="section alt">
 
+<div class="section-header">
 <h2>Popular Calculators</h2>
+<p>Everything you need to manage your finances</p>
+</div>
 
 <div class="grid">
 
 <a href="/phcalculator/calculators/income-tax-calculator.html" class="card">
-<h3>Income Tax Calculator</h3>
-<p>Calculate your tax, net salary, and deductions using TRAIN law.</p>
+<h3>Income Tax</h3>
+<p>Compute taxes, net salary, and deductions.</p>
 </a>
 
 <a href="/phcalculator/calculators/sss-contribution-calculator.html" class="card">
 <h3>SSS Contribution</h3>
-<p>Estimate your monthly SSS contributions with full breakdown.</p>
+<p>Estimate your monthly contributions.</p>
 </a>
 
 <a href="/phcalculator/calculators/pagibig-loan-calculator.html" class="card">
 <h3>Pag-IBIG Loan</h3>
-<p>Compute monthly amortization and total loan cost.</p>
+<p>Calculate amortization and loan cost.</p>
 </a>
 
 <a href="/phcalculator/calculators/13th-month-calculator.html" class="card">
 <h3>13th Month Pay</h3>
-<p>Know exactly how much you will receive this December.</p>
+<p>Know your December payout.</p>
 </a>
 
 </div>
 
 </section>
 
-<!-- FEATURES -->
+<!-- WHY -->
 <section class="section">
 
-<h2>Why Use Pinoy Calculator?</h2>
+<div class="section-header">
+<h2>Why Pinoy Calculator?</h2>
+</div>
 
 <div class="grid">
 
 <div class="card">
-<h3>Accurate Calculations</h3>
-<p>Based on latest Philippine laws including TRAIN and SSS updates.</p>
+<h3>Accurate</h3>
+<p>Updated with latest Philippine laws.</p>
 </div>
 
 <div class="card">
-<h3>Simple & Fast</h3>
-<p>No complicated forms. Get results instantly.</p>
+<h3>Fast</h3>
+<p>No forms. No hassle. Instant results.</p>
 </div>
 
 <div class="card">
 <h3>Made for Filipinos</h3>
-<p>Built specifically for PH salary, taxes, and benefits.</p>
+<p>Designed specifically for PH users.</p>
 </div>
-
-</div>
-
-</section>
-
-<!-- BLOG -->
-<section class="section">
-
-<h2>Latest Guides</h2>
-
-<div class="grid">
-
-<a href="#" class="card">
-<h3>How to Compute SSS Contribution in 2026</h3>
-<p>Step-by-step guide for employees and voluntary members.</p>
-</a>
-
-<a href="#" class="card">
-<h3>Income Tax Philippines Explained</h3>
-<p>Understand TRAIN law and how your salary is taxed.</p>
-</a>
-
-<a href="#" class="card">
-<h3>How to Increase Your Take-Home Pay</h3>
-<p>Smart tips to reduce deductions legally.</p>
-</a>
-
-</div>
-
-</section>
-
-<!-- INFO -->
-<section class="section">
-
-<div class="info">
-
-<h2>Financial Calculators for Filipinos</h2>
-
-<p>
-Pinoy Calculator helps you understand your finances better by providing accurate and easy-to-use tools.
-</p>
-
-<p>
-Whether you're computing your income tax, SSS contribution, or loan payments, everything is designed to be simple and reliable.
-</p>
 
 </div>
 
@@ -295,7 +132,7 @@ Whether you're computing your income tax, SSS contribution, or loan payments, ev
 <!-- CTA -->
 <section class="cta-section">
 
-<h2>Start Calculating Your Salary Today</h2>
+<h2>Start Calculating Your Salary</h2>
 
 <a href="/phcalculator/calculators/income-tax-calculator.html" class="btn-primary">
 Try Income Tax Calculator →
@@ -303,7 +140,6 @@ Try Income Tax Calculator →
 
 </section>
 
-<!-- FOOTER -->
 <div id="footer"></div>
 
 <script src="/phcalculator/js/main.js"></script>

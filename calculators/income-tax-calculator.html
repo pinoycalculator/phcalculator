@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Income Tax Calculator Philippines</title>
+
+<meta name="description" content="Calculate your income tax in the Philippines using the latest TRAIN law rates. Get monthly tax, annual tax, and net salary instantly.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/phcalculator/css/style.css">
+
+<style>
+
+body{
+font-family:'Inter',sans-serif;
+background:#f9fafb;
+color:#111;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+.hero h1{
+font-size:34px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+.hero p{
+color:#555;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 20px 50px rgba(0,0,0,0.08);
+margin-bottom:30px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-top:10px;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:16px;
+}
+
+.result{
+margin-top:25px;
+padding:20px;
+background:#eef3ff;
+border-radius:14px;
+line-height:1.7;
+}
+
+.info-section{
+background:white;
+padding:25px;
+border-radius:14px;
+margin-top:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+.table th,.table td{
+padding:12px;
+border-bottom:1px solid #eee;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<div class="container">
+
+<div class="hero">
+<h1>Income Tax Calculator</h1>
+<p>Calculate your monthly and annual income tax instantly using the latest TRAIN law rates.</p>
+</div>
+
+<div class="card">
+
+<label>Monthly Salary (₱)</label>
+
+<input type="number" id="salary" value="30000" oninput="calculateTax()">
+
+<div class="result" id="result"></div>
+
+</div>
+
+<!-- TAX TABLE -->
+<div class="info-section">
+
+<h2>Philippine Income Tax Table (TRAIN Law)</h2>
+
+<table class="table">
+<tr><th>Annual Income</th><th>Tax Rate</th></tr>
+<tr><td>Up to ₱250,000</td><td>0%</td></tr>
+<tr><td>₱250,001 - ₱400,000</td><td>15%</td></tr>
+<tr><td>₱400,001 - ₱800,000</td><td>₱22,500 + 20%</td></tr>
+<tr><td>₱800,001 - ₱2,000,000</td><td>₱102,500 + 25%</td></tr>
+<tr><td>₱2,000,001 - ₱8,000,000</td><td>₱402,500 + 30%</td></tr>
+<tr><td>Over ₱8,000,000</td><td>₱2,202,500 + 35%</td></tr>
+</table>
+
+</div>
+
+<!-- SEO CONTENT -->
+<div class="info-section">
+
+<h2>How Income Tax is Calculated in the Philippines</h2>
+
+<p>
+Income tax in the Philippines follows a progressive system under the TRAIN Law. This means higher income levels are taxed at higher rates.
+</p>
+
+<p>
+Your taxable income is your annual salary minus exemptions and contributions like SSS, PhilHealth, and Pag-IBIG.
+</p>
+
+</div>
+
+<div class="info-section">
+
+<h2>What You Should Know</h2>
+
+<ul>
+<li>₱250,000 annual income is tax-free</li>
+<li>Taxes increase progressively</li>
+<li>Government contributions reduce taxable income</li>
+</ul>
+
+</div>
+
+<!-- FAQ -->
+<div class="info-section">
+
+<h2>Frequently Asked Questions</h2>
+
+<p><strong>Is this calculator accurate?</strong><br>
+Yes, it follows the latest TRAIN tax table.</p>
+
+<p><strong>Does this include deductions?</strong><br>
+This is a simplified estimate. Actual tax may vary.</p>
+
+<p><strong>Why is my tax high?</strong><br>
+Higher income falls into higher tax brackets.</p>
+
+</div>
+
+</div>
+
+<div id="footer"></div>
+
+<script src="/phcalculator/js/main.js"></script>
+
+<script>
+
+function formatPeso(num){
+return "₱ " + num.toLocaleString(undefined, {minimumFractionDigits:2});
+}
+
+function calculateTax(){
+
+let monthly = parseFloat(document.getElementById("salary").value);
+if(!monthly) return;
+
+let annual = monthly * 12;
+let tax = 0;
+
+if(annual <= 250000){
+tax = 0;
+}
+else if(annual <= 400000){
+tax = (annual - 250000) * 0.15;
+}
+else if(annual <= 800000){
+tax = 22500 + (annual - 400000) * 0.20;
+}
+else if(annual <= 2000000){
+tax = 102500 + (annual - 800000) * 0.25;
+}
+else if(annual <= 8000000){
+tax = 402500 + (annual - 2000000) * 0.30;
+}
+else{
+tax = 2202500 + (annual - 8000000) * 0.35;
+}
+
+let monthlyTax = tax / 12;
+let net = monthly - monthlyTax;
+
+document.getElementById("result").innerHTML = `
+<strong>Monthly Salary:</strong> ${formatPeso(monthly)} <br>
+<strong>Annual Salary:</strong> ${formatPeso(annual)} <br><br>
+
+<strong>Monthly Tax:</strong> ${formatPeso(monthlyTax)} <br>
+<strong>Annual Tax:</strong> ${formatPeso(tax)} <br><br>
+
+<strong>Estimated Take-Home Pay:</strong> ${formatPeso(net)}
+`;
+
+}
+
+window.onload = calculateTax;
+
+</script>
+
+</body>
+</html>

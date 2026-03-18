@@ -10,7 +10,60 @@
 
 <meta name="description" content="Free Filipino financial calculators including SSS, income tax, Pag-IBIG loan, and 13th month pay.">
 
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="/phcalculator/css/style.css">
+
+<style>
+
+body{
+font-family:'Inter',sans-serif;
+}
+
+.hero h1{
+font-size:38px;
+font-weight:600;
+}
+
+.hero p{
+color:#555;
+font-size:16px;
+margin-top:10px;
+}
+
+/* button */
+.cta-btn{
+display:inline-block;
+margin-top:20px;
+padding:12px 20px;
+background:#2563eb;
+color:white;
+border-radius:10px;
+text-decoration:none;
+font-weight:500;
+transition:0.2s;
+}
+
+.cta-btn:hover{
+background:#1e4fd6;
+}
+
+/* cards */
+.calculator-card{
+cursor:pointer;
+}
+
+.calculator-card h3{
+margin-bottom:8px;
+}
+
+.calculator-card p{
+color:#666;
+font-size:14px;
+}
+
+</style>
 
 </head>
 
@@ -19,19 +72,21 @@
 <!-- HEADER -->
 <div id="header"></div>
 
-
 <main>
 
 <section class="hero">
 
-<h1>Pinoy Finance Tools</h1>
+<h1>Pinoy Calculator</h1>
 
 <p>
-Free financial calculators for Filipinos. Estimate taxes, government contributions, loans, and more.
+Smart financial tools for Filipinos. Instantly calculate your taxes, SSS contributions, loans, and take-home pay.
 </p>
 
-</section>
+<a href="/phcalculator/calculators/sss-contribution-calculator.html" class="cta-btn">
+Start Calculating →
+</a>
 
+</section>
 
 <section class="calculator-grid">
 
@@ -39,25 +94,25 @@ Free financial calculators for Filipinos. Estimate taxes, government contributio
 
 <div class="grid">
 
-<div class="calculator-card">
+<a href="/phcalculator/calculators/sss-contribution-calculator.html" class="calculator-card">
 <h3>SSS Contribution Calculator</h3>
-<p>Coming soon</p>
-</div>
+<p>Estimate your monthly SSS contributions and breakdown instantly.</p>
+</a>
 
-<div class="calculator-card">
+<a href="/phcalculator/calculators/income-tax-calculator.html" class="calculator-card">
 <h3>Income Tax Calculator</h3>
-<p>Coming soon</p>
-</div>
+<p>Calculate your tax, net salary, and deductions using TRAIN law.</p>
+</a>
 
-<div class="calculator-card">
+<a href="/phcalculator/calculators/pagibig-loan-calculator.html" class="calculator-card">
 <h3>Pag-IBIG Loan Calculator</h3>
-<p>Coming soon</p>
-</div>
+<p>Estimate monthly payments and total loan costs easily.</p>
+</a>
 
-<div class="calculator-card">
+<a href="/phcalculator/calculators/13th-month-calculator.html" class="calculator-card">
 <h3>13th Month Pay Calculator</h3>
-<p>Coming soon</p>
-</div>
+<p>Quickly compute your 13th month pay based on your salary.</p>
+</a>
 
 </div>
 
@@ -71,5 +126,4 @@ Free financial calculators for Filipinos. Estimate taxes, government contributio
 <script src="/phcalculator/js/main.js"></script>
 
 </body>
-
 </html>

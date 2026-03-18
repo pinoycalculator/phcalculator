@@ -69,4 +69,7 @@ function applySavedTheme(){
 }
 
 /* LANGUAGE (SIMPLE DEMO) */
+function setLanguage(lang){
+  localStorage.setItem("language", lang);
+}
 

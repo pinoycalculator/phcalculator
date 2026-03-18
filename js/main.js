@@ -46,3 +46,40 @@ function highlightActiveMenu(){
     }
   });
 }
+
+
+/* MINI SSS CALCULATOR */
+function miniCalc(){
+  let salary = parseFloat(document.getElementById("miniSalary").value);
+  if(!salary) return;
+
+  let total = salary * 0.14;
+
+  document.getElementById("miniResult").innerHTML =
+    "Estimated SSS: ₱ " + total.toLocaleString(undefined, {minimumFractionDigits:2});
+}
+
+/* DARK MODE */
+function toggleDarkMode(){
+  document.body.classList.toggle("dark");
+
+  let mode = document.body.classList.contains("dark") ? "dark" : "light";
+  localStorage.setItem("theme", mode);
+}
+
+/* LOAD DARK MODE */
+(function(){
+  let saved = localStorage.getItem("theme");
+  if(saved === "dark"){
+    document.body.classList.add("dark");
+  }
+})();
+
+/* SAVE CALCULATOR RESULTS */
+function saveResult(key, value){
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function getSavedResult(key){
+  return JSON.parse(localStorage.getItem(key));
+}

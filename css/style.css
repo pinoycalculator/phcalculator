@@ -247,3 +247,18 @@ body.dark .card{
 body.dark .hero{
   background:linear-gradient(135deg,#1e3a8a,#1d4ed8);
 }
+
+.logo img{
+  height:48px;
+  transition:0.25s ease;
+}
+
+.logo img:hover{
+  transform:scale(1.05);
+}
+
+@media(max-width:768px){
+  .logo img{
+    height:40px;
+  }
+}

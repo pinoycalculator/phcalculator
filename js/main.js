@@ -69,8 +69,4 @@ function applySavedTheme(){
 }
 
 /* LANGUAGE (SIMPLE DEMO) */
-function setLanguage(lang){
-  localStorage.setItem("language", lang);
 
-  alert("Language switched to " + (lang === "tl" ? "Tagalog" : "English"));
-}

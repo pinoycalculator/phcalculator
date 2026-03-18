@@ -212,4 +212,35 @@ grid-template-columns:1fr;
 font-size:28px;
 }
 
+
+/* DARK MODE */
+body.dark{
+background:#0f172a;
+color:#e5e7eb;
+}
+
+body.dark .card,
+body.dark .feature,
+body.dark .info{
+background:#1e293b;
+color:#e5e7eb;
+}
+
+body.dark .site-header{
+background:#020617;
+border-bottom:1px solid #1e293b;
+}
+
+body.dark .nav-menu a{
+color:#e5e7eb;
+}
+
+body.dark .site-footer{
+background:#020617;
+}
+
+body.dark input{
+background:#0f172a;
+color:white;
+border:1px solid #334155;
 }

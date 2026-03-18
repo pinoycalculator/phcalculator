@@ -63,15 +63,18 @@ function miniCalc(){
 function toggleDarkMode(){
   document.body.classList.toggle("dark");
 
-  let mode = document.body.classList.contains("dark") ? "dark" : "light";
-  localStorage.setItem("theme", mode);
+  let isDark = document.body.classList.contains("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+
+  document.getElementById("themeToggle").innerText = isDark ? "☀️" : "🌙";
 }
 
-/* LOAD DARK MODE */
 (function(){
   let saved = localStorage.getItem("theme");
   if(saved === "dark"){
     document.body.classList.add("dark");
+    let btn = document.getElementById("themeToggle");
+    if(btn) btn.innerText = "☀️";
   }
 })();
 

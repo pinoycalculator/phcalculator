@@ -73,3 +73,23 @@ function setLanguage(lang){
   localStorage.setItem("language", lang);
 }
 
+/* MINI SSS CALC (simple demo) */
+function miniCalc(){
+  let salary = document.getElementById("miniSalary").value;
+  let result = document.getElementById("miniResult");
+
+  if(!salary){
+    result.innerHTML = "Enter salary";
+    return;
+  }
+
+  let contribution = salary * 0.045;
+
+  result.innerHTML = `
+    Estimated Contribution: <strong>₱${contribution.toFixed(2)}</strong>
+  `;
+}
+
+/* AUTO RUN */
+miniCalc();
+
